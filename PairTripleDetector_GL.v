@@ -9,21 +9,21 @@
 
 module PairTripleDetector_GL
 (
+  // these are the ports 
   input  wire in0,
   input  wire in1,
   input  wire in2,
   output wire out
  );
+// this is the private implementation
+  wire x;
+  wire w;
+  wire y;
 
-  //''' ACTIVITY '''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-  // Implement pair/triple detector using explicit gate-level modeling
-  //''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-
-  `ECE2300_UNUSED( in0 );
-  `ECE2300_UNUSED( in1 );
-  `ECE2300_UNUSED( in2 );
-  `ECE2300_UNDRIVEN( out );
-
+  or(w,in0,in1);
+  and(x, in0, in1);
+  and(y,w,in2);
+  or(out, y,x);
 endmodule
 
 `endif /* PAIR_TRIPLE_DETECTOR_GL_V */
